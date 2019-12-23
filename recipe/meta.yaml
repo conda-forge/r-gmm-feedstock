@@ -1,4 +1,4 @@
-{% set version = '1.6-2' %}
+{% set version = "1.6-4" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,12 +10,12 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/gmm_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/gmm/gmm_{{ version }}.tar.gz
-  sha256: b12f888276c2d480f17ae2711e4915bb253574e3fc36531349f1c2f2c8ad715d
+  sha256: 03ad5ff37d174e9cef13fa41d866412c57b7cbd9155312831e16a1fcda70bc95
 
 build:
   noarch: generic
   merge_build_host: True  # [win]
-  number: 1001
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
