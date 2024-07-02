@@ -1,6 +1,5 @@
 {% set version = "1.8" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-gmm
@@ -13,8 +12,7 @@ source:
   sha256: 7099fc5c6a9069924392995a726190e8d62f6e55375ef356084b0c73346d85d8
 
 build:
-  merge_build_host: true  # [win]
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
@@ -24,7 +22,9 @@ requirements:
     - cross-r-base {{ r_base }}  # [build_platform != target_platform]
     - r-sandwich                 # [build_platform != target_platform]
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ compiler('fortran') }}        # [not win]
     - {{ compiler('m2w64_fortran') }}  # [win]
     - {{ posix }}filesystem        # [win]
@@ -37,7 +37,6 @@ requirements:
     - r-sandwich
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-sandwich
 
 test:
